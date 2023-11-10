@@ -2,7 +2,12 @@
 ```bash
 gcloud compute instances create master worker-1 worker-2 --create-disk=auto-delete=yes,boot=yes,image=projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20211115 --zone us-central1-a --machine-type=e2-medium
 ```
-
+###fix for kubeadm,kubectl,kubelet  : https://stackoverflow.com/questions/76299027/gpg-error-public-key-is-not-available-no-pubkey-b53dc80d13edef05-during-vm-cre
+I ran this 
+sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://dl.k8s.io/apt/doc/apt-key.gpg
+echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+sudo apt-get update -y
+....
 
 ### To Create a User in Ubuntu follow the below steps:
 ```bash
